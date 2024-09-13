@@ -1,6 +1,7 @@
 package emazon.transaction.infrastructure.configuration.security;
 
 import emazon.transaction.infrastructure.configuration.util.JwtService;
+import emazon.transaction.infrastructure.configuration.util.SecurityConstants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,6 +28,6 @@ public class MyUserDetailsService implements UserDetailsService {
                 new SimpleGrantedAuthority(role)
         );
 
-        return new User(username, null, authorities);
+        return new User(username, SecurityConstants.EMPTY_PASSWORD, authorities);
     }
 }
