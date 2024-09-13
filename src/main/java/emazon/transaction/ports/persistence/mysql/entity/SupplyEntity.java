@@ -25,7 +25,7 @@ public class SupplyEntity {
     private Long productId;
 
     @Column(name = SupplyEntityConstants.COLUMN_QUANTITY)
-    private Integer quantity;
+    private Integer productQuantity;
 
     @Column(name = SupplyEntityConstants.COLUMN_USER_ID)
     private Long userId;
