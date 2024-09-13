@@ -1,7 +1,9 @@
 package emazon.transaction.infrastructure.configuration.feign;
 
+import emazon.transaction.infrastructure.configuration.feign.interceptor.JwtRequestInterceptor;
 import feign.Client;
 import feign.Logger;
+import feign.RequestInterceptor;
 import feign.httpclient.ApacheHttpClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,10 +17,13 @@ public class FeignConfig {
     }
 
     @Bean
+    public RequestInterceptor requestInterceptor(){
+        return new JwtRequestInterceptor();
+    }
+
+    @Bean
     public Logger .Level feignLoggerLevel() {
         return Logger.Level.FULL;
     }
 
-
-
-}
+    }

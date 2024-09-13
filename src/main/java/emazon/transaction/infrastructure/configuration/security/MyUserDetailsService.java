@@ -27,6 +27,6 @@ public class MyUserDetailsService implements UserDetailsService {
                 new SimpleGrantedAuthority(role)
         );
 
-        return new User(username, "", authorities);
+        return new User(username, null, authorities);
     }
 }
