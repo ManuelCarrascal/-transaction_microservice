@@ -2,7 +2,6 @@ package emazon.transaction.ports.application.http.controller;
 
 import emazon.transaction.domain.api.ISupplyServicePort;
 import emazon.transaction.domain.model.Supply;
-import emazon.transaction.infrastructure.configuration.feign.IStockFeignClient;
 import emazon.transaction.ports.application.http.dto.SupplyRequest;
 import emazon.transaction.ports.application.http.dto.SupplyResponse;
 import emazon.transaction.ports.application.http.mapper.ISupplyResponseMapper;
@@ -22,7 +21,6 @@ public class SupplyRestController {
     private final ISupplyEntityMapper supplyEntityMapper;
     private final ISupplyServicePort supplyServicePort;
     private final ISupplyResponseMapper supplyResponseMapper;
-    private final IStockFeignClient stockFeignClient;
 
    @PreAuthorize(RolePermissionConstants.HAS_ROLE_AUX_BODEGA)
    @PostMapping("/add/{productId}")
