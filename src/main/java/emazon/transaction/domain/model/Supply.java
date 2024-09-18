@@ -8,16 +8,18 @@ public class Supply {
     private Integer productQuantity;
     private Date createdAt;
     private Long userId;
+    private Date nextSupplyDate;
 
     public Supply() {
     }
 
-    public Supply(Long supplyId, Long productId, Integer productQuantity, Date createdAt , Long userId) {
+    public Supply(Long supplyId, Long productId, Integer productQuantity, Date createdAt , Long userId,Date nextSupplyDate) {
         this.supplyId = supplyId;
         this.productId = productId;
         this.productQuantity = productQuantity;
         this.createdAt = createdAt;
         this.userId = userId;
+        this.nextSupplyDate = nextSupplyDate;
     }
 
     public Long getSupplyId() {
@@ -58,5 +60,13 @@ public class Supply {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public Date getNextSupplyDate() {
+        return nextSupplyDate;
+    }
+
+    public void setNextSupplyDate(Date nextSupplyDate) {
+        this.nextSupplyDate = nextSupplyDate;
     }
 }
