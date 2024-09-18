@@ -6,6 +6,8 @@ import emazon.transaction.ports.persistence.mysql.mapper.ISupplyEntityMapper;
 import emazon.transaction.ports.persistence.mysql.repository.ISupplyRepository;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Date;
+
 @RequiredArgsConstructor
 public class SupplyAdapter implements ISupplyPersistencePort {
     private final ISupplyRepository supplyRepository;
@@ -16,4 +18,11 @@ public class SupplyAdapter implements ISupplyPersistencePort {
     public void saveSupply(Supply supply) {
         supplyRepository.save(supplyEntityMapper.toEntity(supply));
     }
+
+    @Override
+    public Date findNextSupplyDateByProductId(Long productId) {
+        return supplyRepository.findNextSupplyDateByProductId(productId);
+    }
+
+
 }

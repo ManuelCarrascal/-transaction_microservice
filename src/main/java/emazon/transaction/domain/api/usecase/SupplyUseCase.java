@@ -32,10 +32,20 @@ public class SupplyUseCase implements ISupplyServicePort {
         if (!stockConnectionPersistencePort.existById(supply.getProductId())) {
             throw new NotFoundException(SupplyUseCaseContants.PRODUCT_NOT_FOUND);
         }
+        if(supply.getNextSupplyDate() == null){
+            throw new NotFoundException("Next supply date is required");
+        }
         supply.setCreatedAt(new Date());
+
         Long userId = authenticationPersistencePort.getAuthenticatedUserId();
         supply.setUserId(userId);
         stockConnectionPersistencePort.updateQuantityProduct(supply.getProductId(), supply.getProductQuantity());
         supplyPersistencePort.saveSupply(supply);
     }
+
+    @Override
+    public Date getNextSupplyDate(Long productId) {
+        return supplyPersistencePort.findNextSupplyDateByProductId(productId);
+    }
+
 }

@@ -7,6 +7,7 @@ public class SupplyEntityConstants {
     public static final String COLUMN_QUANTITY = "quantity";
     public static final String COLUMN_USER_ID = "user_id";
     public static final String COLUMN_CREATED_AT = "created_at";
+    public static final String COLUMN_NEXT_SUPPLY_DATE = "next_supply_date";
 
     private SupplyEntityConstants() {
     }
