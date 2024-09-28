@@ -1,15 +1,16 @@
 package emazon.transaction.infrastructure.configuration.beanconfiguration;
 
 import emazon.transaction.domain.api.ISupplyServicePort;
+import emazon.transaction.domain.api.usecase.ISaleServicePort;
+import emazon.transaction.domain.api.usecase.SaleUseCase;
 import emazon.transaction.domain.api.usecase.SupplyUseCase;
-import emazon.transaction.domain.spi.IAuthenticationPersistencePort;
-import emazon.transaction.domain.spi.IStockConnectionPersistencePort;
-import emazon.transaction.domain.spi.ISupplyPersistencePort;
+import emazon.transaction.domain.spi.*;
+import emazon.transaction.infrastructure.configuration.feign.ICartFeignClient;
 import emazon.transaction.infrastructure.configuration.feign.IStockFeignClient;
-import emazon.transaction.ports.persistence.mysql.adapter.AuthenticationAdapter;
-import emazon.transaction.ports.persistence.mysql.adapter.StockConnectionAdapter;
-import emazon.transaction.ports.persistence.mysql.adapter.SupplyAdapter;
+import emazon.transaction.ports.application.http.mapper.ICartResponseMapper;
+import emazon.transaction.ports.persistence.mysql.adapter.*;
 import emazon.transaction.ports.persistence.mysql.mapper.ISupplyEntityMapper;
+import emazon.transaction.ports.persistence.mysql.repository.ISaleRepository;
 import emazon.transaction.ports.persistence.mysql.repository.ISupplyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -39,5 +40,20 @@ public class BeanConfiguration {
     @Bean
     public ISupplyServicePort supplyServicePort(ISupplyPersistencePort supplyPersistencePort, IAuthenticationPersistencePort authenticationPersistencePort, IStockConnectionPersistencePort stockConnectionPersistencePort) {
         return new SupplyUseCase(supplyPersistencePort, authenticationPersistencePort, stockConnectionPersistencePort);
+    }
+
+    @Bean
+    public ICartConnectionPersistencePort cartConnectionPersistencePort(ICartFeignClient cartFeignClient, ICartResponseMapper cartResponseMapper) {
+        return new CartConnectionAdapter(cartFeignClient, cartResponseMapper);
+    }
+
+    @Bean
+    ISalePersistencePort salePersistencePort( ISaleRepository saleRepository) {
+        return new SaleAdapter(saleRepository);
+    }
+
+    @Bean
+    public ISaleServicePort saleServicePort(ICartConnectionPersistencePort cartConnectionPersistencePort, IAuthenticationPersistencePort authenticationPersistencePort, ISalePersistencePort salePersistencePort, IStockConnectionPersistencePort stockConnectionPersistencePort, ISupplyPersistencePort supplyPersistencePort) {
+        return new SaleUseCase(cartConnectionPersistencePort, authenticationPersistencePort, salePersistencePort, stockConnectionPersistencePort, supplyPersistencePort);
     }
 }

@@ -1,4 +1,4 @@
-package emazon.transaction.ports.application.http.dto;
+package emazon.transaction.ports.application.http.dto.supply;
 
 import lombok.Getter;
 import lombok.Setter;
