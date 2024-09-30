@@ -31,6 +31,6 @@ public class HandlerControllerAdvisor {
     @ExceptionHandler(InsufficientStockException.class)
     public ResponseEntity<Map<String, String>> handleInsufficientStockException(InsufficientStockException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body(Map.of("message", ex.getMessage()));
+                .body(Map.of(HandlerControllerAdvisorConstants.MESSAGE_KEY, ex.getMessage()));
     }
 }

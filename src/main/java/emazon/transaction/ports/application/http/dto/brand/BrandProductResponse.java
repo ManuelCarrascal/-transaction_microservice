@@ -1,4 +1,4 @@
-package emazon.transaction.ports.application.http.dto;
+package emazon.transaction.ports.application.http.dto.brand;
 
 import emazon.transaction.ports.application.http.util.openapi.brand.BrandProductResponseConstants;
 import io.swagger.v3.oas.annotations.media.Schema;

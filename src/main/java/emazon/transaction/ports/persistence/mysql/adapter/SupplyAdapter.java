@@ -13,7 +13,6 @@ public class SupplyAdapter implements ISupplyPersistencePort {
     private final ISupplyRepository supplyRepository;
     private final ISupplyEntityMapper supplyEntityMapper;
 
-
     @Override
     public void saveSupply(Supply supply) {
         supplyRepository.save(supplyEntityMapper.toEntity(supply));
@@ -23,6 +22,5 @@ public class SupplyAdapter implements ISupplyPersistencePort {
     public Date findNextSupplyDateByProductId(Long productId) {
         return supplyRepository.findNextSupplyDateByProductId(productId);
     }
-
 
 }

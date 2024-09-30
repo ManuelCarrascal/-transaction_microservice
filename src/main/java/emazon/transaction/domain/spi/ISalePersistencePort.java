@@ -6,5 +6,5 @@ import emazon.transaction.domain.model.Sale;
 
 public interface ISalePersistencePort {
 
-    void saveSale(Sale sale);
+    Sale saveSale(Sale sale);
 }

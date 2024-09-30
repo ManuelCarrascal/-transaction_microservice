@@ -9,4 +9,5 @@ public interface ICartConnectionPersistencePort {
 
     List<Cart> buyCart(Long userId);
 
+    void deleteCartByUserId(Long userId);
 }

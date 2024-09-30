@@ -19,10 +19,10 @@ public class SaleAdapter implements ISalePersistencePort {
     }
 
     @Override
-    public void saveSale(Sale sale) {
-        SaleEntity saleEntity =MyMapper.toSaleEntity(sale);
+    public Sale saveSale(Sale sale) {
+        SaleEntity saleEntity = MyMapper.toSaleEntity(sale);
         saleEntity.calculateTotal();
         saleEntity.setCreatedAt(Date.from(Instant.now()));
-        saleRepository.save(saleEntity);
+        return MyMapper.toSale(saleRepository.save(saleEntity));
     }
 }

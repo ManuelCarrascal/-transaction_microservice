@@ -1,4 +1,4 @@
-package emazon.transaction.ports.application.http.dto;
+package emazon.transaction.ports.application.http.dto.category;
 
 import emazon.transaction.ports.application.http.util.openapi.category.CategoryProductResponseConstants;
 import io.swagger.v3.oas.annotations.media.Schema;

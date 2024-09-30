@@ -1,8 +1,8 @@
 package emazon.transaction.ports.application.http.dto.product;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import emazon.transaction.ports.application.http.dto.BrandProductResponse;
-import emazon.transaction.ports.application.http.dto.CategoryProductResponse;
+import emazon.transaction.ports.application.http.dto.brand.BrandProductResponse;
+import emazon.transaction.ports.application.http.dto.category.CategoryProductResponse;
 import lombok.*;
 
 import java.util.Date;
