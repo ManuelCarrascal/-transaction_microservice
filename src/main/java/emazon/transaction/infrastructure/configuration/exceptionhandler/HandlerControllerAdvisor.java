@@ -1,5 +1,6 @@
 package emazon.transaction.infrastructure.configuration.exceptionhandler;
 
+import emazon.transaction.domain.exception.InsufficientStockException;
 import emazon.transaction.domain.exception.NotFoundException;
 import emazon.transaction.infrastructure.configuration.util.HandlerControllerAdvisorConstants;
 import org.springframework.core.Ordered;
@@ -25,5 +26,11 @@ public class HandlerControllerAdvisor {
     public ResponseEntity<Map<String, String>> handleAccessDeniedException() {
         return ResponseEntity.status(HttpStatus.FORBIDDEN)
                 .body(Map.of(HandlerControllerAdvisorConstants.MESSAGE_KEY, HandlerControllerAdvisorConstants.ACCESS_DENIED));
+    }
+
+    @ExceptionHandler(InsufficientStockException.class)
+    public ResponseEntity<Map<String, String>> handleInsufficientStockException(InsufficientStockException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(Map.of(HandlerControllerAdvisorConstants.MESSAGE_KEY, ex.getMessage()));
     }
 }

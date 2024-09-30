@@ -1,4 +1,4 @@
-package emazon.transaction.ports.application.http.dto;
+package emazon.transaction.ports.application.http.dto.supply;
 
 import emazon.transaction.ports.application.http.util.SupplyRequestConstants;
 import jakarta.persistence.Temporal;

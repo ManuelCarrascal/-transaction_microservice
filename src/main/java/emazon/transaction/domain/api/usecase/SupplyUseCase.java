@@ -33,7 +33,7 @@ public class SupplyUseCase implements ISupplyServicePort {
             throw new NotFoundException(SupplyUseCaseContants.PRODUCT_NOT_FOUND);
         }
         if(supply.getNextSupplyDate() == null){
-            throw new NotFoundException("Next supply date is required");
+            throw new NotFoundException(SupplyUseCaseContants.NEXT_SUPPLY_DATE_REQUIRED);
         }
         supply.setCreatedAt(new Date());
 
