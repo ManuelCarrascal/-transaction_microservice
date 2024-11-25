@@ -13,9 +13,4 @@ public class AuthenticationAdapter implements IAuthenticationPersistencePort {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return Long.valueOf( userDetails.getUsername());
     }
-
-    public String getAuthenticatedUserEmail() {
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return userDetails.getUsername(); // Assuming the email is stored in the username field
-    }
 }
