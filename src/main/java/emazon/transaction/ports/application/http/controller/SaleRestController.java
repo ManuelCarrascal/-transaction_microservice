@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/sale")
+@CrossOrigin(origins = "${cors.allowed.origins}")
 @RequiredArgsConstructor
 public class SaleRestController {
     private final ISaleServicePort saleServicePort;

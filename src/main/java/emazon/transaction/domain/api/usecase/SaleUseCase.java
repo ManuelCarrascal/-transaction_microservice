@@ -18,8 +18,6 @@ public class SaleUseCase implements ISaleServicePort {
     private final ISupplyPersistencePort supplyPersistencePort;
     private final ISaleReportConnectionPersistencePort saleReportConnectionPersistencePort;
 
-
-
     public SaleUseCase(ICartConnectionPersistencePort cartConnectionPersistencePort, IAuthenticationPersistencePort authenticationPersistencePort, ISalePersistencePort salePersistencePort, IStockConnectionPersistencePort stockConnectionPersistencePort, ISupplyPersistencePort supplyPersistencePort, ISaleReportConnectionPersistencePort saleReportConnectionPersistencePort) {
         this.cartConnectionPersistencePort = cartConnectionPersistencePort;
         this.authenticationPersistencePort = authenticationPersistencePort;
