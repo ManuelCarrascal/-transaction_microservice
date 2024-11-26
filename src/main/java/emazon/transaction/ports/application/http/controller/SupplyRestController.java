@@ -26,6 +26,7 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("/api/supply")
+@CrossOrigin(origins = "${cors.allowed.origins}")
 @RequiredArgsConstructor
 public class SupplyRestController {
 
